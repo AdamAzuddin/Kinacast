@@ -13,7 +13,6 @@ const Episodes = forwardRef<HTMLDivElement>((props, ref) => {
 
   return (
     <div ref={ref} className="episodes-section flex flex-col">
-      {/* Episodes content */}
       <h2 className="text-2xl">Episodes</h2>
       <div className="bg-[#273DAC] flex rounded-lg mt-5">
         <Image

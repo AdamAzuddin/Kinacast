@@ -17,7 +17,14 @@ export default function Header({ episodesRef }: HeaderProps) {
   const handleScrollToEpisodes = () => {
     if (episodesRef?.current) {
       episodesRef.current.scrollIntoView({ behavior: "smooth" });
-      setMobileMenuOpen(false); // Close mobile menu if open
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const handleScrollToSpeakers = () => {
+    if (episodesRef?.current) {
+      episodesRef.current.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false);
     }
   };
 
@@ -54,25 +61,39 @@ export default function Header({ episodesRef }: HeaderProps) {
 
           {/* Navigation items for large screens */}
           <nav className="hidden lg:flex lg:items-center lg:justify-center flex-1">
-            {navItems.map((item) =>
-              item.name === "Episodes" ? (
-                <button
-                  key={item.name}
-                  onClick={handleScrollToEpisodes}
-                  className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {item.name}
-                </button>
-              ) : (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {item.name}
-                </Link>
-              )
-            )}
+            {navItems.map((item) => {
+              if (item.name == "Episodes") {
+                return (
+                  <button
+                    key={item.name}
+                    onClick={handleScrollToEpisodes}
+                    className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.name}
+                  </button>
+                );
+              } else if (item.name == "Speakers") {
+                return (
+                  <button
+                    key={item.name}
+                    onClick={handleScrollToSpeakers}
+                    className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.name}
+                  </button>
+                );
+              } else {
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.name}
+                  </Link>
+                );
+              }
+            })}
           </nav>
 
           {/* Hamburger menu for small screens */}
