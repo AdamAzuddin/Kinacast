@@ -59,7 +59,7 @@ export default function Header({ episodesRef }: HeaderProps) {
                 <button
                   key={item.name}
                   onClick={handleScrollToEpisodes}
-                  className="hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   {item.name}
                 </button>
@@ -67,7 +67,7 @@ export default function Header({ episodesRef }: HeaderProps) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   {item.name}
                 </Link>
@@ -111,7 +111,7 @@ export default function Header({ episodesRef }: HeaderProps) {
               <button
                 key={item.name}
                 onClick={handleScrollToEpisodes}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-400"
               >
                 {item.name}
               </button>
@@ -119,7 +119,7 @@ export default function Header({ episodesRef }: HeaderProps) {
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-400"
               >
                 {item.name}
               </Link>
