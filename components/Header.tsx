@@ -6,9 +6,20 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/constants/NavItems";
 
-export default function Header() {
+interface HeaderProps {
+  episodesRef: React.RefObject<HTMLDivElement | null>;
+}
+
+export default function Header({ episodesRef }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollToEpisodes = () => {
+    if (episodesRef?.current) {
+      episodesRef.current.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false); // Close mobile menu if open
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -43,15 +54,25 @@ export default function Header() {
 
           {/* Navigation items for large screens */}
           <nav className="hidden lg:flex lg:items-center lg:justify-center flex-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.name === "Episodes" ? (
+                <button
+                  key={item.name}
+                  onClick={handleScrollToEpisodes}
+                  className="hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  {item.name}
+                </button>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Hamburger menu for small screens */}
@@ -85,16 +106,25 @@ export default function Header() {
           </button>
         </div>
         <nav className="flex-1 px-4 py-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.name === "Episodes" ? (
+              <button
+                key={item.name}
+                onClick={handleScrollToEpisodes}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                {item.name}
+              </button>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                {item.name}
+              </Link>
+            )
+          )}
         </nav>
       </div>
     </header>
