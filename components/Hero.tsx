@@ -1,40 +1,37 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-
-const images = [
-  '/hero-ep1.png',
-  '/hero-ep2.png'
-]
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import {heroImages} from "@/constants/HeroImages"
 
 export default function Hero() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 1600)
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 1600);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {images.map((image, index) => (
+      {heroImages.map((image, index) => (
         <div
           key={image}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in ${
-            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            index === currentImageIndex ? "opacity-100" : "opacity-0"
           }`}
         >
           <Image
             src={image}
             alt={`Hero image ${index + 1}`}
-            layout="fill"
-            objectFit="cover"
+            style={{ objectFit: "cover" }}
             quality={100}
             priority
+            fill
           />
         </div>
       ))}
@@ -48,6 +45,5 @@ export default function Hero() {
         </p>
       </div>
     </div>
-  )
+  );
 }
-
