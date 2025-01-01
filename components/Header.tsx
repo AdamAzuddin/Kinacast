@@ -8,9 +8,10 @@ import { navItems } from "@/constants/NavItems";
 
 interface HeaderProps {
   episodesRef: React.RefObject<HTMLDivElement | null>;
+  speakersRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export default function Header({ episodesRef }: HeaderProps) {
+export default function Header({ episodesRef, speakersRef }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -22,8 +23,8 @@ export default function Header({ episodesRef }: HeaderProps) {
   };
 
   const handleScrollToSpeakers = () => {
-    if (episodesRef?.current) {
-      episodesRef.current.scrollIntoView({ behavior: "smooth" });
+    if (speakersRef?.current) {
+      speakersRef.current.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     }
   };
