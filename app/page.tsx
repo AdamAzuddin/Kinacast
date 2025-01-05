@@ -4,14 +4,16 @@ import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import Episodes from "@/components/Episodes";
 import Speakers from "@/components/Speakers";
+import Crews from "@/components/Crews";
 
 export default function Home() {
   const episodesRef = useRef<HTMLDivElement>(null);
   const speakersRef = useRef<HTMLDivElement>(null);
+  const crewsRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="bg-[#1F1F1F] min-h-screen">
-      <Header episodesRef={episodesRef} speakersRef={speakersRef}/>
+      <Header episodesRef={episodesRef} speakersRef={speakersRef} crewsRef={crewsRef}/>
       <Hero />
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div ref={episodesRef}>
@@ -19,6 +21,9 @@ export default function Home() {
         </div>
         <div ref={speakersRef}>
           <Speakers/>
+        </div>
+        <div ref={crewsRef}>
+          <Crews/>
         </div>
       </main>
     </div>

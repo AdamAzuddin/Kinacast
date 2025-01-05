@@ -9,9 +9,14 @@ import { navItems } from "@/constants/NavItems";
 interface HeaderProps {
   episodesRef: React.RefObject<HTMLDivElement | null>;
   speakersRef: React.RefObject<HTMLDivElement | null>;
+  crewsRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export default function Header({ episodesRef, speakersRef }: HeaderProps) {
+export default function Header({
+  episodesRef,
+  speakersRef,
+  crewsRef,
+}: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -25,6 +30,13 @@ export default function Header({ episodesRef, speakersRef }: HeaderProps) {
   const handleScrollToSpeakers = () => {
     if (speakersRef?.current) {
       speakersRef.current.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const handleScrollToCrews = () => {
+    if (crewsRef?.current) {
+      crewsRef.current.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     }
   };
@@ -78,6 +90,16 @@ export default function Header({ episodesRef, speakersRef }: HeaderProps) {
                   <button
                     key={item.name}
                     onClick={handleScrollToSpeakers}
+                    className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.name}
+                  </button>
+                );
+              } else if (item.name == "Crews") {
+                return (
+                  <button
+                    key={item.name}
+                    onClick={handleScrollToCrews}
                     className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     {item.name}
