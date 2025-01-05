@@ -18,7 +18,7 @@ const Crews = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="pr-5 flex flex-col py-2">
           <Image
             src={"/high_comm/Afzal.JPG"}
-            alt="person1"
+            alt="afzal"
             width={100}
             height={300}
           />
@@ -28,7 +28,7 @@ const Crews = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="pr-5 flex flex-col py-2">
           <Image
             src={"/high_comm/Sayyid.jpeg"}
-            alt="person2"
+            alt="sayyid"
             width={100}
             height={300}
           />
@@ -38,7 +38,7 @@ const Crews = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="pr-5 flex flex-col py-2">
           <Image
             src={"/high_comm/Eunice.JPG"}
-            alt="person1"
+            alt="eunice"
             width={100}
             height={300}
           />
@@ -48,7 +48,7 @@ const Crews = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="pr-5 flex flex-col py-2">
           <Image
             src={"/high_comm/Hidnee.JPG"}
-            alt="person2"
+            alt="hidnee"
             width={100}
             height={300}
           />
@@ -58,7 +58,7 @@ const Crews = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="pr-5 flex flex-col py-2">
           <Image
             src={"/high_comm/Zaf.jpeg"}
-            alt="person1"
+            alt="zaf"
             width={100}
             height={300}
           />
