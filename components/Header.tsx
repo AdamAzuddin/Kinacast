@@ -10,6 +10,7 @@ interface HeaderProps {
   episodesRef: React.RefObject<HTMLDivElement | null>;
   speakersRef: React.RefObject<HTMLDivElement | null>;
   crewsRef: React.RefObject<HTMLDivElement | null>;
+  sponsorsRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export default function Header({
@@ -35,6 +36,13 @@ export default function Header({
   };
 
   const handleScrollToCrews = () => {
+    if (crewsRef?.current) {
+      crewsRef.current.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const handleScrollToSponsors = () => {
     if (crewsRef?.current) {
       crewsRef.current.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
@@ -100,6 +108,16 @@ export default function Header({
                   <button
                     key={item.name}
                     onClick={handleScrollToCrews}
+                    className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.name}
+                  </button>
+                );
+              } else if (item.name == "Sponsors") {
+                return (
+                  <button
+                    key={item.name}
+                    onClick={handleScrollToSponsors}
                     className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     {item.name}
