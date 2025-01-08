@@ -70,7 +70,7 @@ const Crews = forwardRef<HTMLDivElement>((props, ref) => {
         onClick={navigateToSpeakers}
         className="bg-[#273DAC] rounded-lg self-center p-2 m-5"
       >
-        See more speakers
+        See more Crews
       </button>
     </div>
   );
