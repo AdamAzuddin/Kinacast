@@ -7,16 +7,17 @@ import { Menu, X } from "lucide-react";
 import { navItems } from "@/constants/NavItems";
 
 interface HeaderProps {
-  episodesRef: React.RefObject<HTMLDivElement | null>;
-  speakersRef: React.RefObject<HTMLDivElement | null>;
-  crewsRef: React.RefObject<HTMLDivElement | null>;
-  sponsorsRef: React.RefObject<HTMLDivElement | null>;
+  episodesRef?: React.RefObject<HTMLDivElement | null>;
+  speakersRef?: React.RefObject<HTMLDivElement | null>;
+  crewsRef?: React.RefObject<HTMLDivElement | null>;
+  sponsorsRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export default function Header({
   episodesRef,
   speakersRef,
   crewsRef,
+  sponsorsRef,
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -43,8 +44,8 @@ export default function Header({
   };
 
   const handleScrollToSponsors = () => {
-    if (crewsRef?.current) {
-      crewsRef.current.scrollIntoView({ behavior: "smooth" });
+    if (sponsorsRef?.current) {
+      sponsorsRef.current.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     }
   };
@@ -83,41 +84,74 @@ export default function Header({
           {/* Navigation items for large screens */}
           <nav className="hidden lg:flex lg:items-center lg:justify-center flex-1">
             {navItems.map((item) => {
-              if (item.name == "Episodes") {
+              // Check if the ref for each section is available
+              if (item.name === "Episodes") {
                 return (
                   <button
                     key={item.name}
-                    onClick={handleScrollToEpisodes}
+                    onClick={() => {
+                      if (episodesRef?.current) {
+                        // If ref is available, scroll to the section
+                        episodesRef?.current.scrollIntoView({
+                          behavior: "smooth",
+                        });
+                      } else {
+                        // If ref is not available, navigate to the link
+                        window.location.href = item.href || "#";
+                      }
+                    }}
                     className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     {item.name}
                   </button>
                 );
-              } else if (item.name == "Speakers") {
+              } else if (item.name === "Speakers") {
                 return (
                   <button
                     key={item.name}
-                    onClick={handleScrollToSpeakers}
+                    onClick={() => {
+                      if (speakersRef?.current) {
+                        speakersRef?.current.scrollIntoView({
+                          behavior: "smooth",
+                        });
+                      } else {
+                        window.location.href = item.href || "#";
+                      }
+                    }}
                     className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     {item.name}
                   </button>
                 );
-              } else if (item.name == "Crews") {
+              } else if (item.name === "Crews") {
                 return (
                   <button
                     key={item.name}
-                    onClick={handleScrollToCrews}
+                    onClick={() => {
+                      if (crewsRef?.current) {
+                        crewsRef?.current.scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        window.location.href = item.href || "#";
+                      }
+                    }}
                     className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     {item.name}
                   </button>
                 );
-              } else if (item.name == "Sponsors") {
+              } else if (item.name === "Sponsors") {
                 return (
                   <button
                     key={item.name}
-                    onClick={handleScrollToSponsors}
+                    onClick={() => {
+                      if (sponsorsRef?.current) {
+                        sponsorsRef?.current.scrollIntoView({
+                          behavior: "smooth",
+                        });
+                      } else {
+                        window.location.href = item.href || "#";
+                      }
+                    }}
                     className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     {item.name}
@@ -127,7 +161,7 @@ export default function Header({
                 return (
                   <Link
                     key={item.name}
-                    href={item.href}
+                    href={item.href || "#"}
                     className="hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     {item.name}
