@@ -184,7 +184,7 @@ export default function Header({
             <Link
               key={item.name}
               href={item.href}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-400"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-900"
             >
               {item.name}
             </Link>
