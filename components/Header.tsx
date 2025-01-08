@@ -165,7 +165,7 @@ export default function Header({
       {/* Mobile menu */}
       <div
         ref={mobileMenuRef}
-        className={`fixed inset-y-0 left-0 flex flex-col w-64 max-w-sm bg-[#000000] shadow-lg transform ease-in-out duration-300 ${
+        className={`fixed inset-y-0 left-0 flex flex-col w-64 max-w-sm bg-[#000000] shadow-lg transform ease-in-out duration-300 z-50 ${
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         } lg:hidden`}
       >
