@@ -3,5 +3,5 @@ export const navItems = [
     { name: 'Episodes', href: '/episodes' },
     { name: 'Speakers', href: '/speakers' },
     { name: 'Crews', href: '/crews' },
-    { name: 'Sponsors', href: '/contact-us' },
+    { name: 'Reach Out', href: '/contact-us' },
   ]

@@ -21,35 +21,7 @@ export default function Header({
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  const handleScrollToEpisodes = () => {
-    if (episodesRef?.current) {
-      episodesRef.current.scrollIntoView({ behavior: "smooth" });
-      setMobileMenuOpen(false);
-    }
-  };
-
-  const handleScrollToSpeakers = () => {
-    if (speakersRef?.current) {
-      speakersRef.current.scrollIntoView({ behavior: "smooth" });
-      setMobileMenuOpen(false);
-    }
-  };
-
-  const handleScrollToCrews = () => {
-    if (crewsRef?.current) {
-      crewsRef.current.scrollIntoView({ behavior: "smooth" });
-      setMobileMenuOpen(false);
-    }
-  };
-
-  const handleScrollToSponsors = () => {
-    if (sponsorsRef?.current) {
-      sponsorsRef.current.scrollIntoView({ behavior: "smooth" });
-      setMobileMenuOpen(false);
-    }
-  };
-
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -95,6 +67,7 @@ export default function Header({
                         episodesRef?.current.scrollIntoView({
                           behavior: "smooth",
                         });
+                        setMobileMenuOpen(false);
                       } else {
                         // If ref is not available, navigate to the link
                         window.location.href = item.href || "#";
@@ -114,6 +87,7 @@ export default function Header({
                         speakersRef?.current.scrollIntoView({
                           behavior: "smooth",
                         });
+                        setMobileMenuOpen(false);
                       } else {
                         window.location.href = item.href || "#";
                       }
@@ -129,7 +103,10 @@ export default function Header({
                     key={item.name}
                     onClick={() => {
                       if (crewsRef?.current) {
-                        crewsRef?.current.scrollIntoView({ behavior: "smooth" });
+                        crewsRef?.current.scrollIntoView({
+                          behavior: "smooth",
+                        });
+                        setMobileMenuOpen(false);
                       } else {
                         window.location.href = item.href || "#";
                       }
@@ -139,7 +116,7 @@ export default function Header({
                     {item.name}
                   </button>
                 );
-              } else if (item.name === "Sponsors") {
+              } else if (item.name === "Reach Out") {
                 return (
                   <button
                     key={item.name}
@@ -148,6 +125,7 @@ export default function Header({
                         sponsorsRef?.current.scrollIntoView({
                           behavior: "smooth",
                         });
+                        setMobileMenuOpen(false);
                       } else {
                         window.location.href = item.href || "#";
                       }
@@ -202,25 +180,15 @@ export default function Header({
           </button>
         </div>
         <nav className="flex-1 px-4 py-6">
-          {navItems.map((item) =>
-            item.name === "Episodes" ? (
-              <button
-                key={item.name}
-                onClick={handleScrollToEpisodes}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-400"
-              >
-                {item.name}
-              </button>
-            ) : (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-400"
-              >
-                {item.name}
-              </Link>
-            )
-          )}
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-400"
+            >
+              {item.name}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>
