@@ -1,4 +1,3 @@
-// List of metadata for speakers in a podcast website
 export const speakers = [
     {
       id: 1,
@@ -10,7 +9,7 @@ export const speakers = [
       id: 2,
       name: "Ariff Wafiy",
       title: "Cyclist",
-      imagePath: "/speakers/wafiy.jpg",
+      imagePath: "/speakers/wafiy.jpeg",
     },
     {
       id: 3,
