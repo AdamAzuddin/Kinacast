@@ -139,7 +139,7 @@ export default function Header({
                     {item.name}
                   </button>
                 );
-              } else if (item.name === "Sponsors") {
+              } else if (item.name === "Reach Out") {
                 return (
                   <button
                     key={item.name}
