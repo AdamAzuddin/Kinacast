@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { episodes } from "@/constants/episodes";
+import { episodes } from "@/constants/Episodes";
 import { Episode } from "@/types/types";
 import Header from "@/components/Header";
 

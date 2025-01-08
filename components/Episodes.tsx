@@ -3,7 +3,7 @@
 import { forwardRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { episodes } from "@/constants/episodes";
+import { episodes } from "@/constants/Episodes";
 import { Episode } from "@/types/types";
 
 const Episodes = forwardRef<HTMLDivElement>((props, ref) => {
