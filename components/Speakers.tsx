@@ -2,6 +2,7 @@
 import { forwardRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { speakers } from "@/constants/Speakers";
 
 const Speakers = forwardRef<HTMLDivElement>((props, ref) => {
   const router = useRouter(); // Initialize router
@@ -11,20 +12,27 @@ const Speakers = forwardRef<HTMLDivElement>((props, ref) => {
     router.push("/speakers");
   };
 
+  // Get the last 3 speakers from the list
+  const lastThreeSpeakers = speakers.slice(-3);
+
   return (
     <div ref={ref} className="episodes-section flex flex-col">
       <h2 className="text-2xl">Speakers</h2>
       <div className="flex pt-5">
-        <div className="pr-5 flex flex-col py-2">
-          <Image src={"/person1.jpg"} alt="person1" width={100} height={300} />
-          <span>John Persons</span>
-          <span className="text-gray-500 text-sm">Author</span>
-        </div>
-        <div className="pr-5 flex flex-col py-2">
-          <Image src={"/person2.jpg"} alt="person2" width={100} height={300} />
-          <span>Jennifer Crawford</span>
-          <span className="text-gray-500 text-sm">Entrepreneur</span>
-        </div>
+        {lastThreeSpeakers.map((speaker) => (
+          <div key={speaker.id} className="pr-5 flex flex-col py-2">
+            <div className="flex items-center justify-center h-[200px] w-[100px] overflow-hidden">
+              <Image
+                src={speaker.imagePath}
+                alt={speaker.name}
+                width={100}
+                height={200}
+              />
+            </div>
+            <span>{speaker.name}</span>
+            <span className="text-gray-500 text-sm">{speaker.title}</span>
+          </div>
+        ))}
       </div>
       <button
         onClick={navigateToSpeakers}
