@@ -11,7 +11,7 @@ const Sponsors = forwardRef<HTMLDivElement>((props, ref) => {
   };
 
   return (
-    <div ref={ref} className="episodes-section flex flex-col">
+    <div ref={ref} className="episodes-section flex flex-col p-4">
       <h2 className="text-2xl">Sponsors</h2>
 
       <Image src={"/sponsors.png"} alt="sponsor" width={1000} height={300} />

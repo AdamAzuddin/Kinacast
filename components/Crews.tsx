@@ -12,7 +12,7 @@ const Crews = forwardRef<HTMLDivElement>((props, ref) => {
   };
 
   return (
-    <div ref={ref} className="episodes-section flex flex-col">
+    <div ref={ref} className="episodes-section flex flex-col p-4">
       <h2 className="text-2xl">Crews</h2>
       <div className="flex pt-5">
         <div className="pr-5 flex flex-col py-2">
