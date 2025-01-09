@@ -19,7 +19,7 @@ export const speakers = [
     },
     {
       id: 4,
-      name: "ASP/PB Mohd Nor Rasheed",
+      name: "ASP/PB Mohd Nor Rasyeed",
       title: "UM Auxiliary Police",
       imagePath: "/speakers/rasyeed.jpg",
     },
