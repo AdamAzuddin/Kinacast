@@ -6,6 +6,12 @@ import { useRouter } from "next/navigation";
 import { episodes } from "@/constants/Episodes";
 import { Episode } from "@/types/types";
 
+// Function to get the first sentence from the description
+const getFirstSentence = (text: string) => {
+  const firstSentence = text.split(".")[0]; // Split at the first period
+  return firstSentence.endsWith(".") ? firstSentence : firstSentence + "."; // Add period if missing
+};
+
 const Episodes = forwardRef<HTMLDivElement>((props, ref) => {
   const router = useRouter();
 
@@ -23,9 +29,7 @@ const Episodes = forwardRef<HTMLDivElement>((props, ref) => {
       {latestEpisodes.map((episode: Episode, index) => (
         <div
           key={episode.id}
-          className={`flex rounded mt-5 ${
-            index === 0 ? "bg-[#273DAC]" : ""
-          }`}
+          className={`flex rounded mt-5 ${index === 0 ? "bg-[#273DAC]" : ""}`}
         >
           <div className="relative flex-shrink-0 w-[40%] md:w-[30%] lg:w-[20%]">
             <Image
@@ -42,7 +46,7 @@ const Episodes = forwardRef<HTMLDivElement>((props, ref) => {
               {episode.title}
             </span>
             <span className="text-xs md:text-base lg:text-lg mt-2">
-              {episode.description}
+              {getFirstSentence(episode.description)}
             </span>
           </div>
         </div>
