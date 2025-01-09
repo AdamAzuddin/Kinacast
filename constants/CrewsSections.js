@@ -36,11 +36,11 @@ export const sections = [
     title: "Logistics, Technical, and Video",
     members: [
       {
-        name: "Arif",
+        name: "Afiq Jasmy",
         title: "Head of Department",
-        image: "/logitech_vid/arif.JPG",
+        image: "/logitech_vid/afiq_jasmy.JPG",
       },
-      { name: "Afiq Jasmy", image: "/logitech_vid/afiq_jasmy.JPG" },
+      { name: "Arif", image: "/logitech_vid/arif.JPG" },
       { name: "Alief", image: "/logitech_vid/alief.JPG" },
       { name: "Hana", image: "/logitech_vid/hana.JPG" },
       { name: "Kisshore", image: "/logitech_vid/kisshore.JPG" },
