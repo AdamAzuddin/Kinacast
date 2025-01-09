@@ -65,7 +65,7 @@ export const sections = [
       {
         name: "Shi Yong",
         title: "Advisor",
-        image: "/content_creative/shi_yong.JPG",
+        image: "/content_creative/shi_yong.jpeg",
       },
     ],
   },
