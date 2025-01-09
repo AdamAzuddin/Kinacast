@@ -27,7 +27,7 @@ const Episodes = forwardRef<HTMLDivElement>((props, ref) => {
             index === 0 ? "bg-[#273DAC]" : ""
           }`}
         >
-          <div className="relative flex-shrink-0 w-[30%] md:w-[25%] lg:w-[20%]">
+          <div className="relative flex-shrink-0 w-[40%] md:w-[30%] lg:w-[20%]">
             <Image
               src={episode.thumbnail}
               alt={`thumbnail-${episode.id}`}

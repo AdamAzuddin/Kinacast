@@ -16,27 +16,38 @@ const Speakers = forwardRef<HTMLDivElement>((props, ref) => {
   const lastThreeSpeakers = speakers.slice(-3);
 
   return (
-    <div ref={ref} className="episodes-section flex flex-col">
-      <h2 className="text-2xl">Speakers</h2>
-      <div className="flex pt-5">
+    <div ref={ref} className="episodes-section flex flex-col p-4">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl">Speakers</h2>
+      <div className="flex flex-wrap gap-5 pt-5 justify-between">
         {lastThreeSpeakers.map((speaker) => (
-          <div key={speaker.id} className="pr-5 flex flex-col py-2">
-            <div className="flex items-center justify-center h-[200px] w-[100px] overflow-hidden">
+          <div
+            key={speaker.id}
+            className="flex flex-col w-[30%] md:w-[25%] lg:w-[20%] py-2 items-center justify-between"
+          >
+            <div className="relative w-full h-[16vh] md:h-[40vh] lg:h-[45vh] overflow-hidden rounded-lg flex-shrink-0">
               <Image
                 src={speaker.imagePath}
                 alt={speaker.name}
-                width={100}
-                height={200}
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+                className="absolute inset-0"
               />
             </div>
-            <span>{speaker.name}</span>
-            <span className="text-gray-500 text-sm">{speaker.title}</span>
+            <div className="text-center mt-3">
+              <span className="block text-lg md:text-xl font-semibold">
+                {speaker.name}
+              </span>
+              <span className="block text-gray-500 text-sm md:text-base">
+                {speaker.title}
+              </span>
+            </div>
           </div>
         ))}
       </div>
       <button
         onClick={navigateToSpeakers}
-        className="bg-[#273DAC] rounded-lg self-center p-2 m-5"
+        className="bg-[#273DAC] text-white rounded-lg p-2 m-5 self-center hover:bg-[#1f2f8e] transition"
       >
         See more speakers
       </button>
