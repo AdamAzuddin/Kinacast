@@ -18,13 +18,13 @@ const Speakers = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div ref={ref} className="episodes-section flex flex-col p-4">
       <h2 className="text-2xl md:text-3xl lg:text-4xl">Speakers</h2>
-      <div className="flex flex-wrap gap-5 pt-5 justify-between">
+      <div className="flex flex-wrap gap-2 pt-5">
         {lastThreeSpeakers.map((speaker) => (
           <div
             key={speaker.id}
-            className="flex flex-col w-[30%] md:w-[25%] lg:w-[20%] py-2 items-center justify-between"
+            className="flex flex-col w-[30%] md:w-[25%] lg:w-[15%] p-2"
           >
-            <div className="relative w-full h-[16vh] md:h-[40vh] lg:h-[45vh] overflow-hidden rounded-lg flex-shrink-0">
+            <div className="relative w-full h-[16vh] md:h-[20vh] lg:h-[25vh] overflow-hidden rounded-lg flex-shrink-0">
               <Image
                 src={speaker.imagePath}
                 alt={speaker.name}
