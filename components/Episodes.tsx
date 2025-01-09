@@ -18,32 +18,39 @@ const Episodes = forwardRef<HTMLDivElement>((props, ref) => {
   };
 
   return (
-    <div ref={ref} className="episodes-section flex flex-col">
-      <h2 className="text-2xl">Episodes</h2>
+    <div ref={ref} className="episodes-section flex flex-col p-4">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl mb-4">Episodes</h2>
       {latestEpisodes.map((episode: Episode, index) => (
         <div
           key={episode.id}
-          className={`flex rounded-lg mt-5 ${
-            index === 0 ? "bg-[#273DAC] text-white" : ""
+          className={`flex rounded mt-5 ${
+            index === 0 ? "bg-[#273DAC]" : ""
           }`}
         >
-          <Image
-            src={episode.thumbnail}
-            alt={`thumbnail-${episode.id}`}
-            width={300}
-            height={300}
-            className="p-5"
-          />
-          <div className="pt-5 flex flex-col">
-            <span className="text-xl font-bold">{episode.title}</span>
-            <span className="pt-5 pr-5 text-base">{episode.description}</span>
+          <div className="relative flex-shrink-0 w-[30%] md:w-[25%] lg:w-[20%]">
+            <Image
+              src={episode.thumbnail}
+              alt={`thumbnail-${episode.id}`}
+              layout="responsive"
+              width={4}
+              height={3}
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col justify-center p-4 w-[70%]">
+            <span className="text-md md:text-xl lg:text-2xl font-bold">
+              {episode.title}
+            </span>
+            <span className="text-xs md:text-base lg:text-lg mt-2">
+              {episode.description}
+            </span>
           </div>
         </div>
       ))}
       {/* Button to navigate to /episodes */}
       <button
         onClick={navigateToEpisodes}
-        className="bg-[#273DAC] text-white rounded-lg self-center p-2 m-5"
+        className="bg-[#273DAC] text-white rounded-lg p-2 mt-5 self-center md:self-end lg:self-center hover:bg-[#1f2f8e] transition"
       >
         See more episodes
       </button>
